@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future of Quantum Computing - TechBlog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background-color: #0044cc;
+            padding: 1rem;
+            color: white;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        .navbar a:hover {
+            background-color: #0033aa;
+        }
+        .content {
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .image {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .article-text {
+            flex: 2;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .rating {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .comments {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .comment {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="admin.html">Admin</a>
+    </div>
+
+    <h1>Future of Quantum Computing</h1>
+    <div class="content">
+        <div class="image">
+            <img src="article2.jpg" alt="Quantum Computing">
+            <div class="rating">
+                <button id="love-button-2">❤️</button>
+                <span id="love-count-2">0</span>
+                <button id="dislike-button-2">👎</button>
+                <span id="dislike-count-2">0</span>
+            </div>
+        </div>
+        <div class="article-text">
+            <p>Quantum computing is an area of technology that holds the promise of solving problems that are currently beyond the capabilities of classical computers. This article explores the advancements in quantum computing and its potential impact on various industries.</p>
+            <p>Recent developments in quantum algorithms have shown potential for breakthroughs in areas like cryptography, materials science, and artificial intelligence. As companies invest heavily in quantum research, we are likely to see rapid advancements in this field.</p>
+            <p>However, the transition to quantum computing poses challenges. The technology is still in its infancy, and there are significant hurdles to overcome in terms of stability and error rates. Ensuring that quantum computers can function reliably is crucial for their widespread adoption.</p>
+            <p>Furthermore, ethical considerations surrounding quantum computing must be addressed. The power of quantum computing could lead to security vulnerabilities if not managed properly. It is essential to establish guidelines for responsible development and use of this technology.</p>
+            <p>In conclusion, quantum computing represents a frontier of technology that has the potential to revolutionize many sectors. As research progresses, it is vital to navigate the accompanying challenges thoughtfully.</p>
+        </div>
+    </div>
+
+    <div class="comments">
+        <h2>Comments</h2>
+        <div id="comments-section-2">
+            <!-- Comments will be populated here -->
+        </div>
+        <textarea id="comment-input-2" placeholder="Leave a comment..."></textarea>
+        <input type="text" id="name-input-2" placeholder="Your Name" />
+        <button id="submit-comment-2">Submit</button>
+    </div>
+
+    <script>
+        // Rating functionality
+        let loveCount2 = localStorage.getItem('article2_loveCount') || 0;
+        let dislikeCount2 = localStorage.getItem('article2_dislikeCount') || 0;
+
+        document.getElementById('love-count-2').innerText = loveCount2;
+        document.getElementById('dislike-count-2').innerText = dislikeCount2;
+
+        document.getElementById('love-button-2').onclick = () => {
+            loveCount2++;
+            localStorage.setItem('article2_loveCount', loveCount2);
+            document.getElementById('love-count-2').innerText = loveCount2;
+            updateHomePageCounts();
+        };
+
+        document.getElementById('dislike-button-2').onclick = () => {
+            dislikeCount2++;
+            localStorage.setItem('article2_dislikeCount', dislikeCount2);
+            document.getElementById('dislike-count-2').innerText = dislikeCount2;
+            updateHomePageCounts();
+        };
+
+        function updateHomePageCounts() {
+            localStorage.setItem('article2_loveCount', loveCount2);
+            localStorage.setItem('article2_dislikeCount', dislikeCount2);
+        }
+
+        // Comment functionality
+        document.getElementById('submit-comment-2').onclick = () => {
+            const commentInput = document.getElementById('comment-input-2');
+            const nameInput = document.getElementById('name-input-2');
+            if (commentInput.value && nameInput.value) {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.innerText = `${nameInput.value}: ${commentInput.value}`;
+                document.getElementById('comments-section-2').appendChild(commentDiv);
+                commentInput.value = '';
+                nameInput.value = '';
+            }
+        };
+    </script>
+</body>
+</html>

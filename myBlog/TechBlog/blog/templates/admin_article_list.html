@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - TechBlog</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .articles {
+            display: flex;
+            flex-direction: column;
+        }
+        .article {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'admin_article_list' %}">Admin</a>
+    </div>
+
+    <h1>Admin - Manage Articles</h1>
+    <div class="articles">
+        {% for article in articles %}
+            <div class="article">
+                <h2>{{ article.title }}</h2>
+                <img src="{{ article.image.url }}" alt="{{ article.title }}">
+                <p>{{ article.content|truncatewords:30 }}</p>
+                <a href="{% url 'article_edit' article.pk %}">Edit</a>
+                <form method="post" action="{% url 'article_delete' article.pk %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2>Add New Article</h2>
+    <form method="post" action="{% url 'article_create' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Article</button>
+    </form>
+</body>
+</html>

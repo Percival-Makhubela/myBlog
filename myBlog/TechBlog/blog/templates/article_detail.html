@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }} - TechBlog</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'admin_article_list' %}">Admin</a>
+    </div>
+
+    <h1>{{ article.title }}</h1>
+    <div class="content">
+        <div class="image">
+            <img src="{{ article.image.url }}" alt="{{ article.title }}">
+            <div class="rating">
+                <button id="love-button">❤️</button>
+                <span id="love-count">{{ article.love_count }}</span>
+                <button id="dislike-button">👎</button>
+                <span id="dislike-count">{{ article.dislike_count }}</span>
+            </div>
+        </div>
+        <div class="article-text">
+            <p>{{ article.content }}</p>
+        </div>
+    </div>
+
+    <div class="comments">
+        <h2>Comments</h2>
+        <div id="comments-section">
+            {% for comment in comments %}
+                <div class="comment">
+                    <strong>{{ comment.name }}</strong>: {{ comment.content }}
+                </div>
+            {% empty %}
+                <p>No comments yet.</p>
+            {% endfor %}
+        </div>
+        <textarea id="comment-input" placeholder="Leave a comment..."></textarea>
+        <input type="text" id="name-input" placeholder="Your Name" />
+        <button id="submit-comment">Submit</button>
+    </div>
+
+    <script>
+        // JavaScript for handling ratings and comments
+    </script>
+</body>
+</html>

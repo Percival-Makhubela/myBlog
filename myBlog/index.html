@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBlog - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .navbar {
+            background-color: #0044cc;
+            padding: 1rem;
+            color: white;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        .navbar a:hover {
+            background-color: #0033aa;
+        }
+        .articles {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .article {
+            display: flex;
+            margin-bottom: 20px;
+            width: 30%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            padding: 10px;
+        }
+        .article img {
+            width: 150px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .rating {
+            margin-top: 5px;
+        }
+        .message {
+            font-style: italic;
+            color: #555;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="admin.html">Admin</a>
+    </div>
+
+    <h1>Welcome to TechBlog</h1>
+
+    <div class="articles">
+        <div class="article">
+            <img src="article1.jpg" alt="Rise of AI">
+            <div>
+                <h2><a href="article1.html">Rise of AI</a></h2>
+                <p class="message">Discover how AI is revolutionizing our world and the challenges that come with it.</p>
+                <div class="rating">
+                    ❤️ <span id="article1-love-count">0</span>
+                    👎 <span id="article1-dislike-count">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="article">
+            <img src="article2.jpg" alt="Future of Quantum Computing">
+            <div>
+                <h2><a href="article2.html">Future of Quantum Computing</a></h2>
+                <p class="message">Explore the exciting future of quantum computing and its potential to change technology.</p>
+                <div class="rating">
+                    ❤️ <span id="article2-love-count">0</span>
+                    👎 <span id="article2-dislike-count">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="article">
+            <img src="article3.jpg" alt="5G Technology">
+            <div>
+                <h2><a href="article3.html">5G Technology</a></h2>
+                <p class="message">Learn about the transformative power of 5G technology and its impact on our connectivity.</p>
+                <div class="rating">
+                    ❤️ <span id="article3-love-count">0</span>
+                    👎 <span id="article3-dislike-count">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve counts from local storage and display on the home page
+        const article1LoveCount = localStorage.getItem('article1_loveCount') || 0;
+        const article1DislikeCount = localStorage.getItem('article1_dislikeCount') || 0;
+
+        const article2LoveCount = localStorage.getItem('article2_loveCount') || 0;
+        const article2DislikeCount = localStorage.getItem('article2_dislikeCount') || 0;
+
+        const article3LoveCount = localStorage.getItem('article3_loveCount') || 0;
+        const article3DislikeCount = localStorage.getItem('article3_dislikeCount') || 0;
+
+        document.getElementById('article1-love-count').innerText = article1LoveCount;
+        document.getElementById('article1-dislike-count').innerText = article1DislikeCount;
+
+        document.getElementById('article2-love-count').innerText = article2LoveCount;
+        document.getElementById('article2-dislike-count').innerText = article2DislikeCount;
+
+        document.getElementById('article3-love-count').innerText = article3LoveCount;
+        document.getElementById('article3-dislike-count').innerText = article3DislikeCount;
+    </script>
+</body>
+</html>

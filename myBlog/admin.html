@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - TechBlog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background-color: #0044cc;
+            padding: 1rem;
+            color: white;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        .navbar a:hover {
+            background-color: #0033aa;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .articles {
+            display: flex;
+            justify-content: space-between; /* Space between articles */
+            flex-wrap: wrap; /* Allow wrapping to next line if necessary */
+        }
+        .article {
+            display: flex;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            flex: 1; /* Allow articles to grow equally */
+            margin-right: 20px; /* Add margin between articles */
+        }
+        .image {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .article-text {
+            flex: 2;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .actions {
+            margin: 10px 0;
+        }
+        .add-article {
+            margin-top: 40px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .add-article input, .add-article textarea {
+            width: 100%;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="admin.html">Admin</a>
+    </div>
+
+    <h1>Admin Panel</h1>
+    <div class="content">
+        <div class="articles">
+            <div class="article">
+                <div class="image">
+                    <img src="article1.jpg" alt="Rise of AI">
+                </div>
+                <div class="article-text">
+                    <h2>Rise of AI</h2>
+                    <p>Artificial Intelligence (AI) is rapidly transforming the world around us...</p>
+                    <div class="actions">
+                        <button onclick="editArticle('article1')">Edit</button>
+                        <button onclick="deleteArticle('article1')">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article">
+                <div class="image">
+                    <img src="article2.jpg" alt="Future of Quantum Computing">
+                </div>
+                <div class="article-text">
+                    <h2>Future of Quantum Computing</h2>
+                    <p>Quantum computing holds the potential to revolutionize industries...</p>
+                    <div class="actions">
+                        <button onclick="editArticle('article2')">Edit</button>
+                        <button onclick="deleteArticle('article2')">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article">
+                <div class="image">
+                    <img src="article3.jpg" alt="5G Technology">
+                </div>
+                <div class="article-text">
+                    <h2>5G Technology</h2>
+                    <p>5G technology is expected to bring significant improvements...</p>
+                    <div class="actions">
+                        <button onclick="editArticle('article3')">Edit</button>
+                        <button onclick="deleteArticle('article3')">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-article">
+            <h2>Add New Article</h2>
+            <input type="text" id="new-article-title" placeholder="Article Title" />
+            <textarea id="new-article-content" rows="5" placeholder="Article Content"></textarea>
+            <input type="file" id="new-article-image" accept="image/*" />
+            <button onclick="addArticle()">Add Article</button>
+        </div>
+    </div>
+
+    <script>
+        function editArticle(articleId) {
+            // Implement edit functionality here
+            console.log("Edit functionality for " + articleId);
+        }
+
+        function deleteArticle(articleId) {
+            // Implement delete functionality here
+            console.log("Delete functionality for " + articleId);
+        }
+
+        function addArticle() {
+            const title = document.getElementById('new-article-title').value;
+            const content = document.getElementById('new-article-content').value;
+            const image = document.getElementById('new-article-image').files[0];
+
+            if (title && content && image) {
+                // Implement adding article functionality here
+                console.log("New article added: " + title);
+            } else {
+                console.log("Please fill all fields!");
+            }
+        }
+    </script>
+</body>
+</html>

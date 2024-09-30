@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBlog Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .articles {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .article {
+            flex: 1 1 30%;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="admin.html">Admin</a>
+    </div>
+
+    <h1>Latest Articles</h1>
+    <div class="articles">
+        {% for article in articles %}
+            <div class="article">
+                <h2><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h2>
+                <img src="{{ article.image.url }}" alt="{{ article.title }}">
+                <p>{{ article.content|truncatewords:30 }}</p>
+                <div class="rating">
+                    <span>❤️ {{ article.love_count }}</span>
+                    <span>👎 {{ article.dislike_count }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

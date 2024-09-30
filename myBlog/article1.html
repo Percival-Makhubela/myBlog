@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise of AI - TechBlog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background-color: #0044cc;
+            padding: 1rem;
+            color: white;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        .navbar a:hover {
+            background-color: #0033aa;
+        }
+        .content {
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .image {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .article-text {
+            flex: 2;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .rating {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .comments {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .comment {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="admin.html">Admin</a>
+    </div>
+
+    <h1>Rise of AI</h1>
+    <div class="content">
+        <div class="image">
+            <img src="article1.jpg" alt="Rise of AI">
+            <div class="rating">
+                <button id="love-button">❤️</button>
+                <span id="love-count">0</span>
+                <button id="dislike-button">👎</button>
+                <span id="dislike-count">0</span>
+            </div>
+        </div>
+        <div class="article-text">
+            <p>Artificial Intelligence (AI) is rapidly transforming the world around us. From healthcare to transportation, AI technologies are being integrated into various sectors to enhance efficiency and effectiveness. This article explores the rise of AI and its implications for the future.</p>
+            <p>As AI systems become more sophisticated, they are able to analyze vast amounts of data and make decisions at speeds far beyond human capabilities. This has led to significant advancements in areas such as predictive analytics, natural language processing, and image recognition.</p>
+            <p>However, the rise of AI also raises ethical concerns. Questions about job displacement, privacy, and the potential for bias in AI algorithms need to be addressed. It is crucial for policymakers and industry leaders to work together to create frameworks that ensure AI is developed responsibly.</p>
+            <p>In addition, the integration of AI into daily life has sparked debates about human reliance on technology. While AI can improve our lives, it is important to maintain a balance and ensure that human judgment remains central in critical decision-making processes.</p>
+            <p>Overall, the rise of AI presents both opportunities and challenges. As we continue to embrace this technology, it is essential to navigate the landscape carefully and ensure that AI is used for the benefit of society as a whole.</p>
+        </div>
+    </div>
+
+    <div class="comments">
+        <h2>Comments</h2>
+        <div id="comments-section">
+            <!-- Comments will be populated here -->
+        </div>
+        <textarea id="comment-input" placeholder="Leave a comment..."></textarea>
+        <input type="text" id="name-input" placeholder="Your Name" />
+        <button id="submit-comment">Submit</button>
+    </div>
+
+    <script>
+        // Rating functionality
+        let loveCount = localStorage.getItem('article1_loveCount') || 0;
+        let dislikeCount = localStorage.getItem('article1_dislikeCount') || 0;
+
+        document.getElementById('love-count').innerText = loveCount;
+        document.getElementById('dislike-count').innerText = dislikeCount;
+
+        document.getElementById('love-button').onclick = () => {
+            loveCount++;
+            localStorage.setItem('article1_loveCount', loveCount);
+            document.getElementById('love-count').innerText = loveCount;
+            updateHomePageCounts();
+        };
+
+        document.getElementById('dislike-button').onclick = () => {
+            dislikeCount++;
+            localStorage.setItem('article1_dislikeCount', dislikeCount);
+            document.getElementById('dislike-count').innerText = dislikeCount;
+            updateHomePageCounts();
+        };
+
+        function updateHomePageCounts() {
+            localStorage.setItem('article1_loveCount', loveCount);
+            localStorage.setItem('article1_dislikeCount', dislikeCount);
+        }
+
+        // Comment functionality
+        document.getElementById('submit-comment').onclick = () => {
+            const commentInput = document.getElementById('comment-input');
+            const nameInput = document.getElementById('name-input');
+            if (commentInput.value && nameInput.value) {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.innerText = `${nameInput.value}: ${commentInput.value}`;
+                document.getElementById('comments-section').appendChild(commentDiv);
+                commentInput.value = '';
+                nameInput.value = '';
+            }
+        };
+    </script>
+</body>
+</html>

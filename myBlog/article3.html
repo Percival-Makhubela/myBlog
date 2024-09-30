@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5G Technology - TechBlog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background-color: #0044cc;
+            padding: 1rem;
+            color: white;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        .navbar a:hover {
+            background-color: #0033aa;
+        }
+        .content {
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .image {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .article-text {
+            flex: 2;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .rating {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .comments {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .comment {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="admin.html">Admin</a>
+    </div>
+
+    <h1>5G Technology</h1>
+    <div class="content">
+        <div class="image">
+            <img src="article3.jpg" alt="5G Technology">
+            <div class="rating">
+                <button id="love-button-3">❤️</button>
+                <span id="love-count-3">0</span>
+                <button id="dislike-button-3">👎</button>
+                <span id="dislike-count-3">0</span>
+            </div>
+        </div>
+        <div class="article-text">
+            <p>5G technology is the fifth generation of mobile networks, designed to deliver higher speeds and more reliable internet connections on mobile devices. This article delves into the features and benefits of 5G technology.</p>
+            <p>With its increased bandwidth and lower latency, 5G has the potential to revolutionize industries such as healthcare, automotive, and entertainment. For instance, it enables real-time data sharing and communication for autonomous vehicles.</p>
+            <p>Moreover, 5G can facilitate the growth of the Internet of Things (IoT), allowing for seamless connectivity among devices and enhancing smart city initiatives. The deployment of 5G networks is expected to drive innovations across various sectors.</p>
+            <p>However, the rollout of 5G technology also raises concerns about security and privacy. As more devices become interconnected, safeguarding data becomes increasingly critical. It is essential to establish protocols that protect user information.</p>
+            <p>In summary, 5G technology holds immense promise for transforming the way we live and work. As its implementation continues, it is important to address the associated challenges to fully realize its potential.</p>
+        </div>
+    </div>
+
+    <div class="comments">
+        <h2>Comments</h2>
+        <div id="comments-section-3">
+            <!-- Comments will be populated here -->
+        </div>
+        <textarea id="comment-input-3" placeholder="Leave a comment..."></textarea>
+        <input type="text" id="name-input-3" placeholder="Your Name" />
+        <button id="submit-comment-3">Submit</button>
+    </div>
+
+    <script>
+        // Rating functionality
+        let loveCount3 = localStorage.getItem('article3_loveCount') || 0;
+        let dislikeCount3 = localStorage.getItem('article3_dislikeCount') || 0;
+
+        document.getElementById('love-count-3').innerText = loveCount3;
+        document.getElementById('dislike-count-3').innerText = dislikeCount3;
+
+        document.getElementById('love-button-3').onclick = () => {
+            loveCount3++;
+            localStorage.setItem('article3_loveCount', loveCount3);
+            document.getElementById('love-count-3').innerText = loveCount3;
+            updateHomePageCounts();
+        };
+
+        document.getElementById('dislike-button-3').onclick = () => {
+            dislikeCount3++;
+            localStorage.setItem('article3_dislikeCount', dislikeCount3);
+            document.getElementById('dislike-count-3').innerText = dislikeCount3;
+            updateHomePageCounts();
+        };
+
+        function updateHomePageCounts() {
+            localStorage.setItem('article3_loveCount', loveCount3);
+            localStorage.setItem('article3_dislikeCount', dislikeCount3);
+        }
+
+        // Comment functionality
+        document.getElementById('submit-comment-3').onclick = () => {
+            const commentInput = document.getElementById('comment-input-3');
+            const nameInput = document.getElementById('name-input-3');
+            if (commentInput.value && nameInput.value) {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.innerText = `${nameInput.value}: ${commentInput.value}`;
+                document.getElementById('comments-section-3').appendChild(commentDiv);
+                commentInput.value = '';
+                nameInput.value = '';
+            }
+        };
+    </script>
+</body>
+</html>
